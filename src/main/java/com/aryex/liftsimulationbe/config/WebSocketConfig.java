@@ -34,19 +34,9 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry
-                .addEndpoint("/ws").setAllowedOrigins("http://127.0.0.1:3000").withSockJS();
+                .addEndpoint("/ws").setAllowedOrigins("https://lift-simulation-cirw.vercel.app").withSockJS();
     }
 
-//    @Override
-//    public boolean configureMessageConverters(List<MessageConverter> messageConverters) {
-//        DefaultContentTypeResolver resolver = new DefaultContentTypeResolver();
-//        resolver.setDefaultMimeType(MimeTypeUtils.APPLICATION_JSON);
-//        MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
-//        converter.setObjectMapper(new ObjectMapper());
-//        converter.setContentTypeResolver(resolver);
-//        messageConverters.add(converter);
-//        return false;
-//    }
 
     @Bean
     public WebMvcConfigurer corsConfigurer() {
@@ -54,7 +44,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/ws/**")
-                        .allowedOrigins("http://127.0.0.1:3000")
+                        .allowedOrigins("https://lift-simulation-cirw.vercel.app")
                         .allowCredentials(true);
             }
         };
@@ -64,10 +54,10 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedOrigin("http://127.0.0.1:3000"); // allow requests from any origin
+        config.addAllowedOrigin("https://lift-simulation-cirw.vercel.app"); // allow requests from any origin
         config.addAllowedMethod("POST");
         config.addAllowedMethod("PUT");
-        config.addAllowedOrigin("http://127.0.0.1:3000");
+        config.addAllowedOrigin("https://lift-simulation-cirw.vercel.app");
         config.addAllowedMethod("GET");// allow POST requests
         config.addAllowedHeader("Content-Type"); // allow the Content-Type header
         source.registerCorsConfiguration("/**", config);

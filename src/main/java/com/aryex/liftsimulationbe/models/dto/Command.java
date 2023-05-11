@@ -1,4 +1,4 @@
 package com.aryex.liftsimulationbe.models.dto;
 
-public record Command(String buttonId) {
+public record Command(String buttonId,String event) {
 }
